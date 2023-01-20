@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const TapMid = ({navigation}: any) => {
+const TapMore = ({navigation}: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerview}>
@@ -12,7 +12,7 @@ const TapMid = ({navigation}: any) => {
               textAlign: 'center',
               marginBottom: 16
             }}>
-            You are on Middle Screen
+            You are on More Screen
           </Text>
           <TouchableOpacity style={styles.button}
             onPress={
@@ -27,7 +27,7 @@ const TapMid = ({navigation}: any) => {
   );
 }
 
-export default TapMid;
+export default TapMore;
 
 const styles = StyleSheet.create({
   container: {

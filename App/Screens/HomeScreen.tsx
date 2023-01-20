@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import TapHome from './TapHome';
 import TapActivity from './TapActivity';
-import TapMid from './TapMid';
+import TapMore from './TapMore';
 import TapConnections from './TapConnections';
 import TapSettings from './TapSettings';
 
@@ -35,12 +35,12 @@ function ActivityStack() {
   );
 }
 
-function MidStack() {
+function MoreStack() {
   return (
-    <Stack.Navigator initialRouteName="TapMid"
+    <Stack.Navigator initialRouteName="TapMore"
       screenOptions={{headerShown: false}} >
-      <Stack.Screen name="TapMid"
-        component={TapMid} />
+      <Stack.Screen name="TapMore"
+        component={TapMore} />
       <Stack.Screen name="TapConnections"
         component={TapConnections} />
     </Stack.Navigator>
@@ -118,12 +118,6 @@ const HomeScreen = ({navigation}: any) => {
             tabBarLabel: 'Activity',
             title: 'Activity'
           }} />
-        <Tab.Screen name="MidStack"
-          component={MidStack}
-          options={{
-            tabBarLabel: 'Middle',
-            title: 'Middle'
-          }} />
         <Tab.Screen name="ConnectionsStack"
           component={ConnectionsStack}
           options={{
@@ -136,6 +130,12 @@ const HomeScreen = ({navigation}: any) => {
           options={{
             tabBarLabel: 'Settings',
             title: 'Setting'
+          }} />
+        <Tab.Screen name="MoreStack"
+          component={MoreStack}
+          options={{
+            tabBarLabel: 'More',
+            title: 'More'
           }} />
       </Tab.Navigator>
     </View>    
