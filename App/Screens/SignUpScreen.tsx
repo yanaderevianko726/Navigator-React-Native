@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -6,9 +6,9 @@ import {
   Text,
   Image,
   KeyboardAvoidingView,
-  Keyboard,
   TouchableOpacity,
   ScrollView,
+  Alert
 } from 'react-native';
 
 const RegisterScreen = ({navigation}: any) => {
@@ -20,24 +20,22 @@ const RegisterScreen = ({navigation}: any) => {
 
   const handleSubmitButton = () => {
     if (!userName) {
-      alert('Please fill Name');
+      showAlert('Please fill Name');
       return;
-    }
-    if (!userEmail) {
-      alert('Please fill Email');
+    }else if (!userEmail) {
+      showAlert('Please fill Email');
       return;
-    }
-    if (!userAge) {
-      alert('Please fill Age');
+    }else if (!userAge) {
+      showAlert('Please fill Age');
       return;
-    }
-    if (!userAddress) {
-      alert('Please fill Address');
+    }else if (!userAddress) {
+      showAlert('Please fill Address');
       return;
-    }
-    if (!userPassword) {
-      alert('Please fill Password');
+    }else if (!userPassword) {
+      showAlert('Please fill Password');
       return;
+    }else{
+      navigation.replace("HomeScreen");
     }
   };
 
@@ -181,3 +179,9 @@ const styles = StyleSheet.create({
     padding: 30,
   },
 });
+
+function showAlert(alertMsg: string) {
+  Alert.alert('Alert', alertMsg, [
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
+  ]);
+}

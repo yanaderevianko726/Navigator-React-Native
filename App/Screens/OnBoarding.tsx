@@ -3,15 +3,20 @@ import {StyleSheet, Image, SafeAreaView} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
 const OnboardingScreen = ({navigation}: any) => {
-  useEffect(() => {
-    setTimeout(() => {
-      // navigation.replace('LoginScreen');
-    }, 3000);
-  }, []);
+
+  const handleSkip = () => {
+    navigation.replace("LoginScreen");
+  };
+
+  const handleDone = () => {
+    navigation.replace("LoginScreen");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Onboarding
+        onSkip={handleSkip}
+        onDone={handleDone}
         pages={[
           {
             backgroundColor: '#fff',

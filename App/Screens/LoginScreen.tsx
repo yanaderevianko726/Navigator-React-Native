@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 
 const LoginScreen = ({navigation}: any) => {
@@ -16,12 +17,13 @@ const LoginScreen = ({navigation}: any) => {
 
   const handleSubmitPress = () => {
     if (!userEmail) {
-      alert('Please fill Email');
+      showAlert('Please fill Email');
       return;
-    }
-    if (!userPassword) {
-      alert('Please fill Password');
+    }else if (!userPassword) {
+      showAlert('Please fill Password');
       return;
+    }else{
+      navigation.replace("HomeScreen");
     }
   };
   return (
@@ -39,6 +41,7 @@ const LoginScreen = ({navigation}: any) => {
               }}
             />
           </View>
+          
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
@@ -49,6 +52,7 @@ const LoginScreen = ({navigation}: any) => {
               keyboardType="email-address"
             />
           </View>
+
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
@@ -66,6 +70,7 @@ const LoginScreen = ({navigation}: any) => {
             onPress={handleSubmitPress}>
             <Text style={styles.buttonTextStyle}>LOGIN</Text>
           </TouchableOpacity>
+
           <Text
             style={styles.registerTextStyle}
             onPress={() => navigation.navigate('SignUpScreen')}>
@@ -131,7 +136,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-function alert(arg0: string) {
-  throw new Error('Function not implemented.');
+
+function showAlert(alertMsg: string) {
+  Alert.alert('Alert', alertMsg, [
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
+  ]);
 }
 
