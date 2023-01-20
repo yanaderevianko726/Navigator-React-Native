@@ -10,6 +10,7 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
+import Preference from 'react-native-preference';
 
 const RegisterScreen = ({navigation}: any) => {
   const [userName, setUserName] = useState('');
@@ -35,6 +36,7 @@ const RegisterScreen = ({navigation}: any) => {
       showAlert('Please fill Password');
       return;
     }else{
+      Preference.set('app-rn-email', userEmail);
       navigation.replace("HomeScreen");
     }
   };

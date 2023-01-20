@@ -1,16 +1,27 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, Image, SafeAreaView} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
+import Preference from 'react-native-preference';
 
 const OnboardingScreen = ({navigation}: any) => {
 
-  const handleSkip = () => {
-    navigation.replace("LoginScreen");
+  const handleSkip = () => {    
+    checkLogin();
   };
 
   const handleDone = () => {
-    navigation.replace("LoginScreen");
+    Preference.set('seen-onboarding', 'seen');
+    checkLogin();
   };
+
+  const checkLogin = () => {
+    const prefEmail = Preference.get('app-rn-email') ?? '';
+    if(prefEmail == ''){
+      navigation.navigate('LoginScreen')
+    }else{
+      navigation.navigate('HomeScreen')
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>

@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Alert
 } from 'react-native';
+import Preference from 'react-native-preference';
 
 const LoginScreen = ({navigation}: any) => {
   const [userEmail, setUserEmail] = useState('');
@@ -23,6 +24,7 @@ const LoginScreen = ({navigation}: any) => {
       showAlert('Please fill Password');
       return;
     }else{
+      Preference.set('app-rn-email', userEmail);
       navigation.replace("HomeScreen");
     }
   };
