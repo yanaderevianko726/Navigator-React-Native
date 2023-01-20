@@ -16,6 +16,7 @@ export default function App() {
       border: "transparent",
     }
   }
+  
   useEffect(() => {
     SplashScreen.hide(); 
   }, []);
