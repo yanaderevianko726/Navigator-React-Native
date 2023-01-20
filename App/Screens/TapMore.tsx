@@ -16,9 +16,9 @@ const TapMore = ({navigation}: any) => {
           </Text>
           <TouchableOpacity style={styles.button}
             onPress={
-              () => navigation.navigate('TapConnections')
+              () => navigation.navigate('TapHome')
             }>
-            <Text>Open Connections Screen</Text>
+            <Text>Open Home Screen</Text>
           </TouchableOpacity>
           <View style={{height: 24}} />
         </View>
