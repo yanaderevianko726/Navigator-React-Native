@@ -1,7 +1,9 @@
 import React from 'react';
-import {StyleSheet, Image, SafeAreaView} from 'react-native';
+import {StyleSheet, Image, SafeAreaView, Appearance} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import DefaultPreference from 'react-native-default-preference';
+
+const colorScheme = Appearance.getColorScheme();
 
 const OnboardingScreen = ({navigation}: any) => {
 
@@ -34,19 +36,19 @@ const OnboardingScreen = ({navigation}: any) => {
         onDone={handleDone}
         pages={[
           {
-            backgroundColor: '#fff',
+            backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
             image: <Image source={require('../Assests/onboard1.png')} />,
             title: 'Slide 1',
             subtitle: 'You can create an account from this app.',
           },
           {
-            backgroundColor: '#fff',
+            backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
             image: <Image source={require('../Assests/onboard1.png')} />,
             title: 'Slide 2',
             subtitle: 'You can get service for wallet from this app.',
           },
           {
-            backgroundColor: '#fff',
+            backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
             image: <Image source={require('../Assests/onboard1.png')} />,
             title: 'Slide 3',
             subtitle: 'You can feel best app experience from this app.',
@@ -62,6 +64,6 @@ export default OnboardingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
   },
 });

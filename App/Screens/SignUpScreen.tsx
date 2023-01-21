@@ -8,9 +8,12 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   ScrollView,
-  Alert
+  Alert,
+  Appearance
 } from 'react-native';
 import DefaultPreference from 'react-native-default-preference';
+
+const colorScheme = Appearance.getColorScheme();
 
 const RegisterScreen = ({navigation}: any) => {
   const [userName, setUserName] = useState('');
@@ -57,7 +60,8 @@ const RegisterScreen = ({navigation}: any) => {
               width: '50%',
               height: 100,
               resizeMode: 'contain',
-              margin: 30,
+              marginTop: 52,
+              marginBottom: 36
             }}
           />
         </View>
@@ -67,7 +71,7 @@ const RegisterScreen = ({navigation}: any) => {
               style={styles.inputStyle}
               onChangeText={UserName => setUserName(UserName)}
               placeholder="Enter Name here"
-              placeholderTextColor="#8b9cb5"
+              placeholderTextColor={colorScheme === 'dark' ? 'white' : '#8b9cb5'}
               autoCapitalize="sentences"
             />
           </View>
@@ -76,7 +80,7 @@ const RegisterScreen = ({navigation}: any) => {
               style={styles.inputStyle}
               onChangeText={UserEmail => setUserEmail(UserEmail)}
               placeholder="Enter Email here"
-              placeholderTextColor="#8b9cb5"
+              placeholderTextColor={colorScheme === 'dark' ? 'white' : '#8b9cb5'}
               keyboardType="email-address"
             />
           </View>
@@ -85,7 +89,7 @@ const RegisterScreen = ({navigation}: any) => {
               style={styles.inputStyle}
               onChangeText={UserPassword => setUserPassword(UserPassword)}
               placeholder="Enter Password here"
-              placeholderTextColor="#8b9cb5"
+              placeholderTextColor={colorScheme === 'dark' ? 'white' : '#8b9cb5'}
               secureTextEntry={true}
             />
           </View>
@@ -94,7 +98,7 @@ const RegisterScreen = ({navigation}: any) => {
               style={styles.inputStyle}
               onChangeText={UserAge => setUserAge(UserAge)}
               placeholder="Enter Age here"
-              placeholderTextColor="#8b9cb5"
+              placeholderTextColor={colorScheme === 'dark' ? 'white' : '#8b9cb5'}
               keyboardType="numeric"
             />
           </View>
@@ -103,7 +107,7 @@ const RegisterScreen = ({navigation}: any) => {
               style={styles.inputStyle}
               onChangeText={UserAddress => setUserAddress(UserAddress)}
               placeholder="Enter Address here"
-              placeholderTextColor="#8b9cb5"
+              placeholderTextColor={colorScheme === 'dark' ? 'white' : '#8b9cb5'}
               autoCapitalize="sentences"
             />
           </View>
@@ -119,7 +123,7 @@ const RegisterScreen = ({navigation}: any) => {
             onPress={() => {
               navigation.navigate('LoginScreen');
             }}>
-            <Text style={{color: 'black', textAlign: 'center'}}>
+            <Text style={{color: colorScheme === 'dark' ? 'white' : '#2c2c2d', textAlign: 'center'}}>
               Already have an Account?
             </Text>
           </TouchableOpacity>
@@ -133,7 +137,7 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
   },
   SectionStyle: {
     flexDirection: 'row',
@@ -163,20 +167,15 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'black',
+    color: colorScheme === 'dark' ? 'white' : '#2c2c2d',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 30,
-    borderColor: '#dadae8',
-  },
-  errorTextStyle: {
-    color: 'red',
-    textAlign: 'center',
-    fontSize: 14,
+    borderColor: colorScheme === 'dark' ? 'white' : '#dadae8',
   },
   successTextStyle: {
-    color: 'white',
+    color: colorScheme === 'dark' ? 'white' : '#2c2c2d',
     textAlign: 'center',
     fontSize: 18,
     padding: 30,

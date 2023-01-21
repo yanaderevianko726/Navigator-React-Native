@@ -1,5 +1,7 @@
-import {StyleSheet, Text, Image, View, SafeAreaView, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, Image, View, SafeAreaView, TouchableOpacity, Appearance} from 'react-native';
 import React from 'react';
+
+const colorScheme = Appearance.getColorScheme();
 
 const TapHome = ({navigation}: any) => {
   return (
@@ -37,7 +39,7 @@ export default TapHome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
   },
   containerview: {
     flex: 1,
@@ -49,8 +51,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   stretch: {
-    width: 160,
-    height: 160,
+    width: 120,
+    height: 120,
     resizeMode: 'stretch',
   },
   textstyle16: {

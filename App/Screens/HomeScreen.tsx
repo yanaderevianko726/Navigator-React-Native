@@ -1,8 +1,7 @@
-import {StyleSheet, Image, View} from 'react-native';
+import {StyleSheet, Image, View, Appearance} from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import TapHome from './TapHome';
 import TapActivity from './TapActivity';
@@ -12,6 +11,8 @@ import TapSettings from './TapSettings';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const colorScheme = Appearance.getColorScheme();
 
 function HomeStack() {
   return (
@@ -73,11 +74,14 @@ const HomeScreen = ({navigation}: any) => {
     <View style={styles.container}>
       <Tab.Navigator initialRouteName="Feed"
         screenOptions={({ route }) => ({
-          headerStyle: { backgroundColor: '#4a98eb' },
-          headerTintColor: '#fff',
+          // headerStyle: { backgroundColor: '#4a98eb' },
+          headerStyle: {
+            backgroundColor: colorScheme === 'dark' ? '#87C1FF' : '#4a98eb'
+          },
+          headerTintColor: '#FFFFFF',
           headerTitleStyle: { fontWeight: 'bold' },
           tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
+          tabBarInactiveTintColor: 'grey',
         })}>
         <Tab.Screen name="HomeStack"
           component={HomeStack}
@@ -215,7 +219,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colorScheme === 'dark' ? '#2c2c2d' : 'white',
   },
   iconstyle: {
     width: 28,
