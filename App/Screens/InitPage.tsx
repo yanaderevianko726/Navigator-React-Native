@@ -9,11 +9,11 @@ const InitPage = ({navigation}: any) => {
 
   useEffect(() => {
     DefaultPreference.get('app-rn-seen-onboarding').then((value) => {
-      if(value == ''){
+      if(value == '' || value == null){
         navigation.replace('OnboardingScreen')
       }else{
         DefaultPreference.get('app-rn-email').then((email) => {
-          if(email == ''){
+          if(email == '' || email == null){
             navigation.replace('LoginScreen')
           }else{
             navigation.replace('HomeScreen')

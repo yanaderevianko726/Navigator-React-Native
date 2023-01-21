@@ -7,7 +7,7 @@ const OnboardingScreen = ({navigation}: any) => {
 
   const handleSkip = () => {  
     DefaultPreference.get('app-rn-email').then((email) => {
-      if(email == ''){
+      if(email == '' || email == null){
         navigation.replace('LoginScreen')
       }else{
         navigation.replace('HomeScreen')
@@ -18,7 +18,7 @@ const OnboardingScreen = ({navigation}: any) => {
   const handleDone = () => {
     DefaultPreference.set('app-rn-seen-onboarding', 'seen').then(() => {
       DefaultPreference.get('app-rn-email').then((email) => {
-        if(email == ''){
+        if(email == '' || email == null){
           navigation.replace('LoginScreen')
         }else{
           navigation.replace('HomeScreen')
