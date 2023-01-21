@@ -1,21 +1,26 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, SafeAreaView, Image} from 'react-native';
-import Preference from 'react-native-preference';
+import {StyleSheet, View, SafeAreaView, Image, LogBox} from 'react-native';
+import DefaultPreference from 'react-native-default-preference';
+
+LogBox.ignoreLogs(['new NativeEventEmitter']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const InitPage = ({navigation}: any) => {
-  const prefSeenOnboard = Preference.get('app-rn-seen-onboarding') ?? '';
-  const prefEmail = Preference.get('app-rn-email') ?? '';
 
   useEffect(() => {
-    if(prefSeenOnboard == ''){
-      navigation.navigate('OnboardingScreen')
-    }else{
-      if(prefEmail == ''){
-        navigation.navigate('LoginScreen')
+    DefaultPreference.get('app-rn-seen-onboarding').then((value) => {
+      if(value == ''){
+        navigation.replace('OnboardingScreen')
       }else{
-        navigation.navigate('HomeScreen')
+        DefaultPreference.get('app-rn-email').then((email) => {
+          if(email == ''){
+            navigation.replace('LoginScreen')
+          }else{
+            navigation.replace('HomeScreen')
+          }
+        });
       }
-    }
+    }); 
   }, []);
 
   return (
