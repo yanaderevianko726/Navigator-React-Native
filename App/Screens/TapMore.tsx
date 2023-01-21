@@ -1,29 +1,133 @@
-import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
-import React from 'react';
+import { StyleSheet, View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { BottomSheet } from 'react-native-btr';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const TapMore = ({navigation}: any) => {
+  const [visible, setVisible] = useState(false);
+
+  const toggleBottomNavigationView = () => {
+    setVisible(!visible);
+  };
+
+  useEffect(() => {
+    toggleBottomNavigationView(); 
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.containerview}>
-        <View style={styles.containerview1}>
+      <View style={styles.container}>
         <Text
-            style={{
-              fontSize: 18,
-              textAlign: 'center',
-              marginBottom: 16
-            }}>
-            You are on More Screen
-          </Text>
-          <TouchableOpacity style={styles.button}
-            onPress={
-              () => navigation.navigate('TapHome')
-            }>
-            <Text>Open Home Screen</Text>
-          </TouchableOpacity>
-          <View style={{height: 24}} />
-        </View>
+          style={{
+            fontSize: 20,
+            marginBottom: 20,
+            textAlign: 'center'
+          }}>
+          Bottom Sheet in React Native
+        </Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={toggleBottomNavigationView}>
+          <Text>Dark/Light</Text>
+        </TouchableOpacity>
+        <BottomSheet
+          visible={visible}
+          onBackButtonPress={toggleBottomNavigationView}
+          onBackdropPress={toggleBottomNavigationView}>
+          <View style={styles.bottomNavigationView}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  padding: 20,
+                  fontSize: 20
+                }}>
+                Share Using
+              </Text>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+              </View>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+                <Icon name="rocket"
+                  size={30} 
+                  color="#900" 
+                  onPress={() => {
+                    toggleBottomNavigationView();
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+        </BottomSheet>
       </View>
-    </SafeAreaView>
+    </SafeAreaView>    
   );
 }
 
@@ -32,26 +136,17 @@ export default TapMore;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-  },
-  containerview: {
-    flex: 1,
-    padding: 16,
-  },
-  containerview1: {
-    flex: 1,
-    alignItems: 'center',
+    margin: 2,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E0F7FA',
   },
-  textstyle: {
-    fontSize: 25,
-    textAlign: 'center',
-    marginBottom: 16
-  },
-  textstyle16: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: 'grey'
+  bottomNavigationView: {
+    backgroundColor: '#fff',
+    width: '100%',
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
     width: 300,
