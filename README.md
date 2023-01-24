@@ -1,6 +1,6 @@
 ## Getting Started
 
-This is React Native Application with Splash Screen.
+This is React Native Application with TypeScript.
 
 ### Install packages and pods
 
